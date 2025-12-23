@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>CSAT Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>📊 CSAT Tracker</h1>
+    <p class="subtitle">Good / Bad • Uso pessoal</p>
+
+    <div class="card">
+      <div class="form-group">
+        <label>Total de atendimentos</label>
+        <input type="number" id="total">
+      </div>
+
+      <div class="form-group">
+        <label>Bad ratings</label>
+        <input type="number" id="bads">
+      </div>
+
+      <div class="form-group">
+        <label>Meta de CSAT (%)</label>
+        <input type="number" id="meta" placeholder="Ex: 92">
+      </div>
+
+      <button onclick="calcular()">Calcular</button>
+    </div>
+
+    <div class="card results" id="resultado"></div>
+
+    <div class="card results" id="saldo"></div>
+
+    <button class="secondary" onclick="limpar()">Limpar histórico</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

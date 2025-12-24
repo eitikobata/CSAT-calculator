@@ -34,16 +34,3 @@ function calcular() {
 
   salvarRegistro(total, goods, bads);
 }
-
-function salvarRegistro(total, goods, bads) {
-  const registros = JSON.parse(localStorage.getItem("csat_log")) || [];
-
-  registros.push({
-    data: new Date().toISOString(),
-    total,
-    goods,
-    bads
-  });
-
-  localStorage.setItem("csat_log", JSON.stringify(registros));
-}

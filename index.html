@@ -1,41 +1,68 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CSAT Tracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSAT Calculator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <div class="container">
-    <h1>CSAT Tracker</h1>
-    <p class="subtitle">Good / Bad</p>
+    <h1>CSAT Calculator</h1>
+    <p class="subtitle">Good / Bad rating model</p>
 
     <div class="card">
       <div class="form-group">
-        <label>Total de atendimentos</label>
-        <input type="number" id="total">
+        <label for="total">Total interactions</label>
+        <input type="number" id="total" min="1" placeholder="e.g. 250">
       </div>
-
       <div class="form-group">
-        <label>Bad ratings</label>
-        <input type="number" id="bads">
+        <label for="bads">Bad ratings</label>
+        <input type="number" id="bads" min="0" placeholder="e.g. 18">
       </div>
-
       <div class="form-group">
-        <label>Meta de CSAT (%)</label>
-        <input type="number" id="meta" placeholder="Ex: 92">
+        <label for="meta">Target CSAT (%)</label>
+        <input type="number" id="meta" min="0" max="100" placeholder="e.g. 92">
       </div>
-
-      <button onclick="calcular()">Calcular</button>
+      <div class="btn-row">
+        <button onclick="calculate()">Calculate</button>
+        <button class="secondary" onclick="clearAll()">Clear</button>
+      </div>
+      <div class="error" id="error"></div>
     </div>
 
-    <div class="card results" id="resultado"></div>
-
+    <div class="card results" id="results" style="display: none;">
+      <div class="metrics-grid">
+        <div class="metric">
+          <span class="metric-label">Current CSAT</span>
+          <span class="metric-value info" id="r-csat">—</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Good ratings</span>
+          <span class="metric-value good" id="r-goods">—</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Goods needed to hit target</span>
+          <span class="metric-value" id="r-needed">—</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Gap to target</span>
+          <span class="metric-value" id="r-gap">—</span>
+        </div>
+      </div>
+      <div class="impact-section">
+        <div class="impact-row">
+          <span class="impact-label">Impact of +1 good rating</span>
+          <span class="impact-value good" id="r-good-impact">—</span>
+        </div>
+        <div class="impact-row">
+          <span class="impact-label">Impact of +1 bad rating</span>
+          <span class="impact-value bad" id="r-bad-impact">—</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
 </body>
-
 </html>
